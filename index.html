@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>GamersZone - Tu blog de videojuegos</title>
+</head>
+<body>
+<header>
+    <a href="#" class="logo">GamersZone</a>
+    <div class="menu-toggle" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    <nav id="main-nav">
+        <a href="#home" class="active">Inicio</a>
+        <a href="#noticias">Noticias</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#lanzamientos">Lanzamientos</a>
+        <a href="#guias">Guías</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="home">
+    <div class="home-content">
+        <h1>Bienvenido a <span>GamersZone</span></h1>
+        <h3 class="typing-text">Tu portal de <span></span></h3>
+        <p>Explora las últimas noticias, reviews y guías de tus videojuegos favoritos. Mantente al día con los próximos lanzamientos y descubre secretos y trucos para mejorar tu experiencia de juego.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-discord"></i></a>
+            <a href="#"><i class="fa-brands fa-twitch"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <a href="#noticias" class="btn">Explorar</a>
+    </div>
+    <div class="home-img">
+        <img src="img/steamr.png" alt="Gaming Console" />
+    </div>
+</section>
+
+<!-- Trending Games Section -->
+<section id="trending" class="trending">
+    <h2 class="section-title">Juegos <span>Trending</span></h2>
+    <div class="games-grid">
+        <div class="game-card">
+            <div class="game-img">
+                <img src="img/eld2.jpg" alt="Game 1">
+            </div>
+            <div class="game-info">
+                <h3>Elden Ring 2</h3>
+                <div class="game-meta">
+                    <span class="platform">PS5, Xbox Series, PC</span>
+                    <span class="rating"><i class="fas fa-star"></i> 9.8</span>
+                </div>
+                <p>La esperada secuela del GOTY llega con nuevos desafíos.</p>
+                <a href="#" class="btn-sm">Leer review</a>
+            </div>
+        </div>
+        <div class="game-card">
+            <div class="game-img">
+                <img src="img/hzd.jpg" alt="Game 2">
+            </div>
+            <div class="game-info">
+                <h3>Horizon Zero Dawn III</h3>
+                <div class="game-meta">
+                    <span class="platform">PS5, PC</span>
+                    <span class="rating"><i class="fas fa-star"></i> 9.5</span>
+                </div>
+                <p>Aloy regresa en una nueva aventura con gráficos impresionantes.</p>
+                <a href="#" class="btn-sm">Leer review</a>
+            </div>
+        </div>
+        <div class="game-card">
+            <div class="game-img">
+                <img src="img/strf.jpg" alt="Game 3">
+            </div>
+            <div class="game-info">
+                <h3>Starfield: New Frontiers</h3>
+                <div class="game-meta">
+                    <span class="platform">Xbox Series, PC</span>
+                    <span class="rating"><i class="fas fa-star"></i> 9.2</span>
+                </div>
+                <p>La expansión que todos esperábamos con nuevos planetas.</p>
+                <a href="#" class="btn-sm">Leer review</a>
+            </div>
+        </div>
+        <div class="game-card">
+            <div class="game-img">
+                <img src="img/tlg.png" alt="Game 4">
+            </div>
+            <div class="game-info">
+                <h3>The Legend of Zelda: Echoes</h3>
+                <div class="game-meta">
+                    <span class="platform">Nintendo Switch 2</span>
+                    <span class="rating"><i class="fas fa-star"></i> 10</span>
+                </div>
+                <p>Link se embarca en una nueva aventura que redefinirá la saga.</p>
+                <a href="#" class="btn-sm">Leer review</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- News Section -->
+<section id="noticias" class="noticias">
+    <h2 class="section-title">Últimas <span>Noticias</span></h2>
+    <div class="news-container">
+        <article class="news-card featured">
+            <div class="news-img">
+                <img src="img/gta6.jpg" alt="Featured News">
+                <div class="news-category">Breaking</div>
+            </div>
+            <div class="news-content">
+                <h3>GTA 6 revela nuevos detalles y fecha de lanzamiento</h3>
+                <p class="news-date"><i class="far fa-calendar-alt"></i> 19 marzo, 2025</p>
+                <p class="news-excerpt">Rockstar Games ha revelado finalmente la fecha oficial para el lanzamiento de GTA 6, junto con un nuevo tráiler que muestra características nunca antes vistas.</p>
+                <a href="#" class="btn-sm">Leer más</a>
+            </div>
+        </article>
+
+        <div class="news-grid">
+            <article class="news-card">
+                <div class="news-img">
+                    <img src="img/micrb.webp" alt="News 1">
+                    <div class="news-category">Industria</div>
+                </div>
+                <div class="news-content">
+                    <h3>Microsoft adquiere otro estudio legendario</h3>
+                    <p class="news-date"><i class="far fa-calendar-alt"></i> 18 marzo, 2025</p>
+                    <p class="news-excerpt">La compañía continúa expandiendo su catálogo de estudios para Game Pass.</p>
+                    <a href="#" class="btn-sm">Leer más</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-img">
+                    <img src="img/worlg.webp" alt="News 2">
+                    <div class="news-category">E-Sports</div>
+                </div>
+                <div class="news-content">
+                    <h3>Equipo español gana el mundial de League of Legends</h3>
+                    <p class="news-date"><i class="far fa-calendar-alt"></i> 17 marzo, 2025</p>
+                    <p class="news-excerpt">Primera vez que un equipo europeo logra el título mundial.</p>
+                    <a href="#" class="btn-sm">Leer más</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-img">
+                    <img src="img/nvidia.jpeg" alt="News 3">
+                    <div class="news-category">Hardware</div>
+                </div>
+                <div class="news-content">
+                    <h3>NVIDIA lanza su nueva serie de GPUs RTX 6000</h3>
+                    <p class="news-date"><i class="far fa-calendar-alt"></i> 16 marzo, 2025</p>
+                    <p class="news-excerpt">Un salto generacional con potencia nunca antes vista.</p>
+                    <a href="#" class="btn-sm">Leer más</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-img">
+                    <img src="img/bdo.jpg" alt="News 4">
+                    <div class="news-category">Mobile</div>
+                </div>
+                <div class="news-content">
+                    <h3>El juego mobile más esperado del año ya está disponible</h3>
+                    <p class="news-date"><i class="far fa-calendar-alt"></i> 15 marzo, 2025</p>
+                    <p class="news-excerpt">Rompiendo récords de descargas en su primer día.</p>
+                    <a href="#" class="btn-sm">Leer más</a>
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="center-btn">
+        <a href="#" class="btn">Ver todas las noticias</a>
+    </div>
+</section>
+
+<!-- Reviews Section -->
+<section id="reviews" class="reviews">
+    <h2 class="section-title">Últimas <span>Reviews</span></h2>
+    <div class="reviews-slider" id="reviews-slider">
+        <div class="review-card">
+            <div class="review-img">
+                <img src="img/ffxvi.jpeg" alt="Review 1">
+                <div class="review-score">9.5</div>
+            </div>
+            <div class="review-content">
+                <h3>Final Fantasy XVI</h3>
+                <p class="review-platform">PS5, PC</p>
+                <p class="review-excerpt">Una obra maestra que combina narrativa, jugabilidad y apartado visual como nunca antes.</p>
+                <a href="#" class="btn-sm">Leer review completa</a>
+            </div>
+        </div>
+
+        <div class="review-card">
+            <div class="review-img">
+                <img src="img/codmw3.jpg" alt="Review 2">
+                <div class="review-score">8.7</div>
+            </div>
+            <div class="review-content">
+                <h3>Call of Duty: Modern Warfare III</h3>
+                <p class="review-platform">PS5, Xbox Series, PC</p>
+                <p class="review-excerpt">La franquicia vuelve a sus raíces con una campaña memorable y multijugador adictivo.</p>
+                <a href="#" class="btn-sm">Leer review completa</a>
+            </div>
+        </div>
+
+        <div class="review-card">
+            <div class="review-img">
+                <img src="img/metroid.jpg" alt="Review 3">
+                <div class="review-score">9.8</div>
+            </div>
+            <div class="review-content">
+                <h3>Metroid Prime 4</h3>
+                <p class="review-platform">Nintendo Switch 2</p>
+                <p class="review-excerpt">La espera valió la pena. Samus regresa con la mejor entrega de la saga.</p>
+                <a href="#" class="btn-sm">Leer review completa</a>
+            </div>
+        </div>
+    </div>
+    <div class="slider-controls">
+        <button id="prev-review" class="slider-btn"><i class="fas fa-chevron-left"></i></button>
+        <button id="next-review" class="slider-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</section>
+
+<!-- Lanzamientos Section -->
+<section id="lanzamientos" class="lanzamientos">
+    <h2 class="section-title">Próximos <span>Lanzamientos</span></h2>
+    <div class="releases-container">
+        <div class="release-timeline">
+            <div class="timeline-item">
+                <div class="release-date">
+                    <img src="img/dragon.jpeg" alt="dragonage" style=" height: 200px;">
+                    <span class="month">ABR</span>
+                    <span class="day">15</span>
+                </div>
+                <div class="release-info">
+                    <h3>Dragon Age: The Veilguard</h3>
+                    <p class="platforms">PS5, Xbox Series X/S, PC</p>
+                    <p class="release-desc">La esperada continuación de la saga de RPG de BioWare promete revolucionar el género con una narrativa inmersiva y un sistema de combate renovado.</p>
+                    <a href="#" class="btn-sm">Más información</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="release-date">
+                    <img src="img/acs.avif" alt="assassins" style=" height: 200px;">
+                    <span class="month">MAY</span>
+                    <span class="day">23</span>
+                </div>
+                <div class="release-info">
+                    <h3>Assassin's Creed Shadows</h3>
+                    <p class="platforms">PS5, Xbox Series X/S, PC</p>
+                    <p class="release-desc">Viaja al Japón feudal en la nueva entrega de la popular saga de Ubisoft. Nuevas mecánicas de sigilo y exploración en un mundo abierto impresionante.</p>
+                    <a href="#" class="btn-sm">Más información</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="release-date">
+                    <img src="img/fable.jpg" alt="albion" style=" height: 170px;">
+                    <span class="month">JUN</span>
+                    <span class="day">07</span>
+                </div>
+                <div class="release-info">
+                    <h3>Fable IV</h3>
+                    <p class="platforms">Xbox Series X/S, PC</p>
+                    <p class="release-desc">El regreso de la legendaria saga de fantasía con un nuevo motor gráfico y una historia que revolucionará el universo de Albion.</p>
+                    <a href="#" class="btn-sm">Más información</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="release-date">
+                    <img src="img/sile.jpeg" alt="sh2" style=" height: 200px;">
+                    <span class="month">JUL</span>
+                    <span class="day">12</span>
+                </div>
+                <div class="release-info">
+                    <h3>Silent Hill 2 Remake</h3>
+                    <p class="platforms">PS5, PC</p>
+                    <p class="release-desc">La reimaginación del clásico de terror psicológico que marcó a una generación llega con gráficos fotorrealistas y audio 3D.</p>
+                    <a href="#" class="btn-sm">Más información</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="release-calendar">
+            <h3>Calendario de <span>Lanzamientos</span></h3>
+            <div class="calendar-options">
+                <button class="calendar-btn active">Abril 2025</button>
+                <button class="calendar-btn">Mayo 2025</button>
+                <button class="calendar-btn">Junio 2025</button>
+                <button class="calendar-btn">Julio 2025</button>
+            </div>
+            <a href="#lanzamientos" class="btn">Ver calendario completo</a>
+        </div>
+    </div>
+</section>
+
+<!-- Guías Section -->
+<section id="guias" class="guias">
+    <h2 class="section-title">Guías y <span>Tutoriales</span></h2>
+    <div class="guides-container">
+<!--        <div class="guides-categories">-->
+<!--            <button class="guide-category active">Todas</button>-->
+<!--            <button class="guide-category">Principiantes</button>-->
+<!--            <button class="guide-category">Trucos</button>-->
+<!--            <button class="guide-category">Secretos</button>-->
+<!--            <button class="guide-category">Logros/Trofeos</button>-->
+<!--        </div>-->
+
+        <div class="guides-grid">
+            <div class="guide-card">
+                <div class="guide-img">
+                    <img src="img/eldeng.jpg" alt="Guide 1">
+                    <div class="guide-difficulty easy">Fácil</div>
+                </div>
+                <div class="guide-content">
+                    <h3>Cómo derrotar a todos los jefes de Elden Ring 2</h3>
+                    <p class="guide-meta">
+                        <span><i class="far fa-clock"></i> 15 min lectura</span>
+                        <span><i class="far fa-eye"></i> 32.5K vistas</span>
+                    </p>
+                    <p class="guide-excerpt">Estrategias paso a paso para vencer a cada jefe sin perder la cordura.</p>
+                    <a href="https://vandal.elespanol.com/guias/guia-elden-ring-trucos-consejos-y-secretos/jefes" class="btn-sm">Ver guía completa</a>
+                </div>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-img">
+                    <img src="img/armstar.webp" alt="Guide 2">
+                    <div class="guide-difficulty medium">Media</div>
+                </div>
+                <div class="guide-content">
+                    <h3>Encuentra todas las armas legendarias en Starfield</h3>
+                    <p class="guide-meta">
+                        <span><i class="far fa-clock"></i> 20 min lectura</span>
+                        <span><i class="far fa-eye"></i> 28.1K vistas</span>
+                    </p>
+                    <p class="guide-excerpt">Mapa y ubicaciones exactas de las mejores armas del juego.</p>
+                    <a href="https://vandal.elespanol.com/guias/guia-starfield-trucos-consejos-y-secretos/armas-unicas" class="btn-sm">Ver guía completa</a>
+                </div>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-img">
+                    <img src="img/guiaffvi.webp" alt="Guide 3">
+                    <div class="guide-difficulty hard">Difícil</div>
+                </div>
+                <div class="guide-content">
+                    <h3>Guía para conseguir el final secreto en Final Fantasy XVI</h3>
+                    <p class="guide-meta">
+                        <span><i class="far fa-clock"></i> 30 min lectura</span>
+                        <span><i class="far fa-eye"></i> 42.3K vistas</span>
+                    </p>
+                    <p class="guide-excerpt">Todos los pasos necesarios para desbloquear el verdadero final.</p>
+                    <a href="https://vandal.elespanol.com/guias/guia-final-fantasy-xvi-trucos-consejos-y-secretos" class="btn-sm">Ver guía completa</a>
+                </div>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-img">
+                    <img src="img/buildsdiv.webp" alt="Guide 4">
+                    <div class="guide-difficulty easy">Fácil</div>
+                </div>
+                <div class="guide-content">
+                    <h3>Optimiza tu build en Diablo IV para el endgame</h3>
+                    <p class="guide-meta">
+                        <span><i class="far fa-clock"></i> 18 min lectura</span>
+                        <span><i class="far fa-eye"></i> 35.8K vistas</span>
+                    </p>
+                    <p class="guide-excerpt">Las mejores combinaciones de habilidades para cada clase.</p>
+                    <a href="https://vandal.elespanol.com/guias/guia-diablo-4-trucos-consejos-y-secretos/builds" class="btn-sm">Ver guía completa</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="center-btn">
+            <a href="#guias" class="btn">Ver todas las guías</a>
+        </div>
+    </div>
+</section>
+
+<!-- Contacto Section -->
+<section id="contacto" class="contacto">
+    <h2 class="section-title">Contacta con <span>Nosotros</span></h2>
+    <div class="contact-container">
+        <div class="contact-info">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>contacto@gamerszone.com</p>
+                <p>press@gamerszone.com</p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Ubicación</h3>
+                <p>Calle de los Videojuegos, 123</p>
+                <p>28001 Madrid, España</p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Teléfono</h3>
+                <p>+34 612 345 678</p>
+                <p>(Lun-Vie 9:00-18:00)</p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-comments"></i>
+                <h3>Redes Sociales</h3>
+                <div class="social-icons mini">
+                    <a href="#"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitch"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form-container">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" placeholder="Tu nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Tu correo electrónico" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Asunto</label>
+                    <select id="subject" required>
+                        <option value="" disabled selected>Selecciona un asunto</option>
+                        <option value="general">Consulta general</option>
+                        <option value="business">Propuesta de negocio</option>
+                        <option value="press">Prensa</option>
+                        <option value="bug">Reportar un error</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" placeholder="Escribe tu mensaje aquí..." rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="btn">Enviar mensaje</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section id="newsletter" class="newsletter">
+    <div class="newsletter-content">
+        <h2>¡Suscríbete a nuestro <span>Newsletter</span>!</h2>
+        <p>Recibe las últimas noticias, reviews y ofertas directamente en tu correo.</p>
+        <form id="newsletter-form">
+            <input type="email" placeholder="Tu correo electrónico" required>
+            <button type="submit" class="btn">Suscribirse</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <h2>GamersZone</h2>
+            <p>Tu portal de videojuegos definitivo.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-discord"></i></a>
+                <a href="#"><i class="fa-brands fa-twitch"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3>Enlaces rápidos</h3>
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#noticias">Noticias</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#lanzamientos">Lanzamientos</a></li>
+                <li><a href="#guias">Guías</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-categories">
+            <h3>Categorías</h3>
+            <ul>
+                <li><a href="#">PC</a></li>
+                <li><a href="#">PlayStation</a></li>
+                <li><a href="#">Xbox</a></li>
+                <li><a href="#">Nintendo</a></li>
+                <li><a href="#">Mobile</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contacto</h3>
+            <p><i class="fas fa-envelope"></i> contacto@gamerszone.com</p>
+            <p><i class="fas fa-phone"></i> +34 612 345 678</p>
+            <p><i class="fas fa-map-marker-alt"></i> Madrid, España</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 GamersZone - Todos los derechos reservados</p>
+        <p>Diseñado con <i class="fas fa-heart"></i> para gamers</p>
+    </div>
+</footer>
+
+<script src="index.js"></script>
+</body>
+</html>
