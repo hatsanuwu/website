@@ -1,22 +1,22 @@
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDfLY2wTdKw0zPdSuy89cr_abH5UldARbk",
-    authDomain: "website-firebase-b70e3.firebaseapp.com",
-    projectId: "website-firebase-b70e3",
-    storageBucket: "website-firebase-b70e3.firebasestorage.app",
-    messagingSenderId: "638748461657",
-    appId: "1:638748461657:web:9b142db391b50105807f48"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyDfLY2wTdKw0zPdSuy89cr_abH5UldARbk",
+  authDomain: "website-firebase-b70e3.firebaseapp.com",
+  projectId: "website-firebase-b70e3",
+  storageBucket: "website-firebase-b70e3.firebasestorage.app",
+  messagingSenderId: "638748461657",
+  appId: "1:638748461657:web:9b142db391b50105807f48"
+};
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile Menu Toggle
