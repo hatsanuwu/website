@@ -89,16 +89,27 @@ document.addEventListener('DOMContentLoaded', function() {
             const message = messageTextarea.value.trim();
 
             if (name && email && subject && message && isValidEmail(email)) {
-                // Show success message
-                showToast('¡Gracias por tu mensaje! Te responderemos lo antes posible.', 'success');
-
-                // Reset form
-                contactForm.reset();
-            } else {
-                // Show error message
+                try {
+                  await addDoc(collection(db, "contact_messages"), {
+                    name,
+                    email,
+                    subject,
+                    message,
+                    createdAt: serverTimestamp(),
+                    status: "new",
+                    source: "website"
+                  });
+              
+                  showToast('¡Gracias por tu mensaje! Te responderemos lo antes posible.', 'success');
+                  contactForm.reset();
+                } catch (err) {
+                  console.error(err);
+                  showToast('No se pudo enviar el mensaje. Intenta de nuevo.', 'error');
+                }
+              } else {
                 showToast('Por favor, completa todos los campos correctamente.', 'error');
-            }
-        });
+              }
+                      });
     }
 
     // Close mobile menu when clicking outside
