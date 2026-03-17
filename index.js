@@ -1,24 +1,159 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  serverTimestamp
+    getFirestore,
+    collection,
+    addDoc,
+    query,
+    where,
+    orderBy,
+    getDocs,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+import {
+    initAuth,
+    signInWithGoogle,
+    logOut,
+    onAuthChange,
+    updateAuthUI
+} from "./auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDfLY2wTdKw0zPdSuy89cr_abH5UldARbk",
-  authDomain: "website-firebase-b70e3.firebaseapp.com",
-  projectId: "website-firebase-b70e3",
-  storageBucket: "website-firebase-b70e3.firebasestorage.app",
-  messagingSenderId: "638748461657",
-  appId: "1:638748461657:web:9b142db391b50105807f48"
+    apiKey: "AIzaSyDfLY2wTdKw0zPdSuy89cr_abH5UldARbk",
+    authDomain: "website-firebase-b70e3.firebaseapp.com",
+    projectId: "website-firebase-b70e3",
+    storageBucket: "website-firebase-b70e3.firebasestorage.app",
+    messagingSenderId: "638748461657",
+    appId: "1:638748461657:web:9b142db391b50105807f48"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// ── Inicializar autenticación ─────────────────────────────────────────────────
+initAuth(app);
+
 document.addEventListener('DOMContentLoaded', function() {
+
+    // ── Observar cambios de sesión (dentro del DOM listo) ─────────────────────
+    onAuthChange((user) => {
+        updateAuthUI(user);
+    });
+
+    // ── Botones de Login con Google ───────────────────────────────────────────
+    const formGoogleBtn = document.getElementById('form-google-btn');
+    const logoutBtn     = document.getElementById('logout-btn');
+
+    async function handleGoogleLogin() {
+        try {
+            await signInWithGoogle();
+        } catch (err) {
+            console.error('Error al iniciar sesión:', err);
+            if (err.code !== 'auth/popup-closed-by-user') {
+                showToast('No se pudo iniciar sesión. Intenta de nuevo.', 'error');
+            }
+        }
+    }
+
+    if (formGoogleBtn) formGoogleBtn.addEventListener('click', handleGoogleLogin);
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', async () => {
+            await logOut();
+            showToast('Sesión cerrada correctamente.', 'info');
+        });
+    }
+
+    // ── Modal Mis Tickets ─────────────────────────────────────────────────────
+    const ticketsModal      = document.getElementById('tickets-modal');
+    const closeTicketsModal = document.getElementById('close-tickets-modal');
+
+    async function openTicketsModal() {
+        if (!ticketsModal) return;
+        ticketsModal.style.display = 'flex';
+        await loadTickets();
+    }
+
+    function closeModal() {
+        if (ticketsModal) ticketsModal.style.display = 'none';
+    }
+
+    if (closeTicketsModal) closeTicketsModal.addEventListener('click', closeModal);
+
+    if (ticketsModal) {
+        ticketsModal.addEventListener('click', (e) => {
+            if (e.target === ticketsModal) closeModal();
+        });
+    }
+
+    async function loadTickets() {
+        const ticketsList  = document.getElementById('tickets-list');
+        const ticketsEmpty = document.getElementById('tickets-empty');
+        if (!ticketsList) return;
+
+        ticketsList.innerHTML = `<tr><td colspan="5" class="tickets-loading"><i class="fas fa-spinner fa-spin"></i> Cargando...</td></tr>`;
+
+        try {
+            // Obtener el usuario actual desde el auth observer ya inicializado
+            const { getCurrentUser } = await import('./auth.js');
+            const user = getCurrentUser();
+            if (!user) {
+                ticketsList.innerHTML = `<tr><td colspan="5" class="tickets-loading">Debes iniciar sesión para ver tus tickets.</td></tr>`;
+                return;
+            }
+
+            const q = query(
+                collection(db, 'contact_messages'),
+                where('email', '==', user.email),
+                orderBy('createdAt', 'desc')
+            );
+            const snapshot = await getDocs(q);
+
+            if (snapshot.empty) {
+                ticketsList.innerHTML = '';
+                if (ticketsEmpty) ticketsEmpty.style.display = 'flex';
+                return;
+            }
+
+            if (ticketsEmpty) ticketsEmpty.style.display = 'none';
+
+            const subjectLabels = {
+                general:  'Consulta general',
+                business: 'Propuesta de negocio',
+                press:    'Prensa',
+                bug:      'Reportar un error'
+            };
+
+            const statusLabels = {
+                new:         { text: 'Nuevo',      cls: 'status-new'         },
+                in_progress: { text: 'En proceso', cls: 'status-in-progress' },
+                resolved:    { text: 'Resuelto',   cls: 'status-resolved'    },
+                closed:      { text: 'Cerrado',    cls: 'status-closed'      }
+            };
+
+            ticketsList.innerHTML = snapshot.docs.map((doc, i) => {
+                const d   = doc.data();
+                const num = String(snapshot.docs.length - i).padStart(4, '0');
+                const date = d.createdAt?.toDate
+                    ? d.createdAt.toDate().toLocaleDateString('es-MX', { day:'2-digit', month:'short', year:'numeric' })
+                    : '—';
+                const status = statusLabels[d.status] || { text: d.status, cls: '' };
+                const subject = subjectLabels[d.subject] || d.subject;
+                const preview = d.message?.length > 60 ? d.message.slice(0, 60) + '…' : d.message;
+
+                return `<tr>
+                    <td>#${num}</td>
+                    <td>${subject}</td>
+                    <td class="ticket-preview">${preview}</td>
+                    <td>${date}</td>
+                    <td><span class="ticket-status ${status.cls}">${status.text}</span></td>
+                </tr>`;
+            }).join('');
+
+        } catch (err) {
+            console.error('Error cargando tickets:', err);
+            ticketsList.innerHTML = `<tr><td colspan="5" class="tickets-loading">Error al cargar los tickets.</td></tr>`;
+        }
+    }
     // Mobile Menu Toggle
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
@@ -90,26 +225,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (name && email && subject && message && isValidEmail(email)) {
                 try {
-                  await addDoc(collection(db, "contact_messages"), {
-                    name,
-                    email,
-                    subject,
-                    message,
-                    createdAt: serverTimestamp(),
-                    status: "new",
-                    source: "website"
-                  });
-              
-                  showToast('¡Gracias por tu mensaje! Te responderemos lo antes posible.', 'success');
-                  contactForm.reset();
+                    await addDoc(collection(db, "contact_messages"), {
+                        name,
+                        email,
+                        subject,
+                        message,
+                        createdAt: serverTimestamp(),
+                        status: "new",
+                        source: "website"
+                    });
+
+                    showToast('¡Gracias por tu mensaje! Te responderemos lo antes posible.', 'success');
+                    contactForm.reset();
                 } catch (err) {
-                  console.error(err);
-                  showToast('No se pudo enviar el mensaje. Intenta de nuevo.', 'error');
+                    console.error(err);
+                    showToast('No se pudo enviar el mensaje. Intenta de nuevo.', 'error');
                 }
-              } else {
+            } else {
                 showToast('Por favor, completa todos los campos correctamente.', 'error');
-              }
-                      });
+            }
+        });
     }
 
     // Close mobile menu when clicking outside

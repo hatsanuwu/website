@@ -36,33 +36,36 @@ export function onAuthChange(callback) {
 // ── Helpers de UI ─────────────────────────────────────────────────────────────
 
 export function updateAuthUI(user) {
-    const loginBtn    = document.getElementById('google-login-btn');
     const userMenu    = document.getElementById('user-menu');
-    const userAvatar  = document.getElementById('user-avatar');
-    const userName    = document.getElementById('user-name');
     const nameInput   = document.getElementById('name');
     const emailInput  = document.getElementById('email');
     const formLocked  = document.getElementById('form-login-wall');
     const formContent = document.getElementById('form-content');
 
     if (user) {
-        if (loginBtn)   loginBtn.style.display  = 'none';
-        if (userMenu)   userMenu.style.display  = 'flex';
-        if (userAvatar) userAvatar.src          = user.photoURL || '';
-        if (userName)   userName.textContent    = user.displayName?.split(' ')[0] || 'Gamer';
+        // Header: mostrar botón logout
+        if (userMenu) userMenu.style.display = 'flex';
 
+        // Formulario: ocultar muro, mostrar form
         if (formLocked)  formLocked.style.display  = 'none';
         if (formContent) formContent.style.display = 'flex';
-        if (nameInput)   nameInput.value           = user.displayName || '';
+
+        // Rellenar datos del usuario
+        if (nameInput)  nameInput.value = user.displayName || '';
         if (emailInput) {
             emailInput.value    = user.email || '';
             emailInput.readOnly = true;
         }
     } else {
-        if (loginBtn)   loginBtn.style.display  = 'flex';
-        if (userMenu)   userMenu.style.display  = 'none';
+        // Header: ocultar botón logout
+        if (userMenu) userMenu.style.display = 'none';
 
+        // Formulario: mostrar muro, ocultar form
         if (formLocked)  formLocked.style.display  = 'flex';
         if (formContent) formContent.style.display = 'none';
+
+        // Limpiar campos
+        if (nameInput)  nameInput.value = '';
+        if (emailInput) { emailInput.value = ''; emailInput.readOnly = false; }
     }
 }

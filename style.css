@@ -1742,3 +1742,23 @@ footer {
         padding: 1.8rem 2rem;
     }
 }
+/* ── Botón logout header ──────────────────────────────────────────────────── */
+.btn-logout-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid #e05252;
+    color: #e05252;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+.btn-logout-header:hover {
+    background: #e05252;
+    color: #fff;
+}
